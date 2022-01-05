@@ -1,4 +1,3 @@
-import e from "express";
 import react, { useState } from "react";
 
 export default function SearchBar({onSearch}) {
@@ -11,8 +10,8 @@ export default function SearchBar({onSearch}) {
                 onSearch(city);
                 setCity('');
             }}>
-                <input type={'text'} placeholder="Ciudad..." value={city} />
-                <button type="submit" value={submit}>Agregar</button>
+                <input type={'text'} placeholder="Ciudad..." value={city} onChange={e => setCity(e.target.value)} />
+                <input type={'submit'} value={'Agregar'} />
             </form>
         </div>
     );
