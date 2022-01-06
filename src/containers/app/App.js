@@ -6,6 +6,7 @@ import Api from "../../apicontain/Api";
 
 function App() {
   const [cities, setCities] = useState([]);
+  const [added, setAdded] = useState(false)
 
   function onSearch(city) {
     Api(city)
@@ -27,7 +28,8 @@ function App() {
             if(cities.find((e) => e.id === city.id)){
               alert(`Ciudad ${city.name} duplicada`)
             } else {
-              return setCities((oldCities) => [...oldCities, city]);
+              return !added ? null : setCities((oldCities) => [...oldCities, city]);
+              
             }
 
           }else{
@@ -38,9 +40,13 @@ function App() {
     function onClose(id) {
       setCities(oldCities => oldCities.filter(c => c.id !== id));
     }
+
+    function success() {
+      setAdded(true)
+    }
   return (
     <div className="App">
-      <Route path={'/'} render={() => <Nav onSearch={onSearch}/>} />
+      <Route path={'/'} render={() => <Nav onSearch={onSearch} success={success}/>} />
       <Route exact path={'/'} render={() => <Cards cities={cities} onClose={onClose}/>}/>
     </div>
   );

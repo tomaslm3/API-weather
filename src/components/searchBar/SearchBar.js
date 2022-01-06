@@ -1,40 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export function validate(input) {
   let error = {}
   if (!input) {
   error.city = 'City name is required'
-  } else if (!/\S+@\S+\.\S+/.test(input)) {
+  } else if ( /^(?:\d+)$/.test(input)) {
     error.city = "City is invalid";
   }
   return error;
 }
-export default function SearchBar({ onSearch }) {
+export default function SearchBar({ onSearch, success }) {
   const [city, setCity] = useState("");
   const [error, setError] = useState({})
+  const [isSubmitting, setisSubmitting] = useState(false)
 
-  let handleInputChange = (e) => {
-    setCity(e.target.value)
-
-    const objError = validate(e.target.value);
-    setError(objError);
+  const handleChange = (e) => {
+    const { value } = e.target
+    setCity(
+      value
+    )
   }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    let objError = validate(city);
+    setError(objError);
+    setisSubmitting(true);
+  }
+  
+  useEffect(() => {
+    if(Object.keys(error).length === 0 && isSubmitting)
+    {success()
+      onSearch(city);
+    setCity('')}
+
+  }, [error])
 
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          onSearch(city);
-          setCity("");
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <input
           type={"text"}
+          name="city"
           placeholder="Ciudad..."
           value={city}
-          onChange={handleInputChange}
-          name="city"
+          onChange={handleChange}
           className={error.city && "danger"}
         />
           {

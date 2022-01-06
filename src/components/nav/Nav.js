@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
 
-function Nav({onSearch}) {
+function Nav({onSearch, success}) {
     return (
         <div className="nav">
             <div className="nav-link">
                 <Link to={'/'}>
                     <h3>HOME</h3>
                 </Link>
-                <SearchBar onSearch={onSearch} />
+                <SearchBar onSearch={onSearch} success={success} />
             </div>
         </div>
         
