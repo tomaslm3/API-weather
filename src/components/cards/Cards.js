@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../card/Card";
 
 export default function Cards({cities, onClose}) {
-    if(cities) {
+    if(cities.length) {
         return(
             <div>
                 {cities.map(city =>
