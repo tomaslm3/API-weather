@@ -3,10 +3,19 @@ import { Route } from "react-router-dom";
 import Nav from "../../components/nav/Nav";
 import Cards from '../../components/cards/Cards'
 import Api from "../../apicontain/Api";
+import useLocalStorage from 'use-local-storage'
+import './App.css';
 
 function App() {
+  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
   const [cities, setCities] = useState([]);
   const [added, setAdded] = useState(false)
+
+  const switchTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+  } 
 
   function onSearch(city) {
     Api(city)
@@ -45,7 +54,10 @@ function App() {
       setAdded(true)
     }
   return (
-    <div className="App">
+    <div className="App" data-theme={theme}>
+      <button onClick={switchTheme}>
+        Switch to {theme === 'light' ? 'Dark' : 'Light'} Theme
+      </button>
       <Route path={'/'} render={() => <Nav onSearch={onSearch} success={success}/>} />
       <Route exact path={'/'} render={() => <Cards cities={cities} onClose={onClose}/>}/>
     </div>
