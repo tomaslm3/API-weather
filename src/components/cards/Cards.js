@@ -1,12 +1,14 @@
 import React from "react";
 import Card from "../card/Card";
+import './Cards.css'
 
 export default function Cards({cities, onClose}) {
     if(cities.length) {
         return(
-            <div>
+            <div className="cities">
                 {cities.map(city =>
                     <Card 
+                        temp={city.temp}
                         max={city.max}
                         min={city.min}
                         name={city.name}
@@ -20,7 +22,7 @@ export default function Cards({cities, onClose}) {
         );
     } else {
         return (
-            <div>Sin ciudades</div>
+            <div className="no-city">Sin ciudades</div>
         )
     }
 }

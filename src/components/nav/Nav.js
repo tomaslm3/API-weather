@@ -1,15 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
+import './Nav.css'
 
-function Nav({onSearch, success}) {
+function Nav({onSearch, success, switchTheme, theme}) {
     return (
         <div className="nav">
             <div className="nav-link">
-                <Link to={'/'}>
-                    <h3>HOME</h3>
-                </Link>
-                <SearchBar onSearch={onSearch} success={success} />
+                <SearchBar onSearch={onSearch} success={success} switchTheme={switchTheme} theme={theme}/>
             </div>
         </div>
         

@@ -5,6 +5,7 @@ import Cards from '../../components/cards/Cards'
 import Api from "../../apicontain/Api";
 import useLocalStorage from 'use-local-storage'
 import './App.css';
+import Footer from "../../components/footer/Footer";
 
 function App() {
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -55,11 +56,9 @@ function App() {
     }
   return (
     <div className="App" data-theme={theme}>
-      <button onClick={switchTheme}>
-        Switch to {theme === 'light' ? 'Dark' : 'Light'} Theme
-      </button>
-      <Route path={'/'} render={() => <Nav onSearch={onSearch} success={success}/>} />
+      <Route path={'/'} render={() => <Nav onSearch={onSearch} success={success} switchTheme={switchTheme} theme={theme}/>} />
       <Route exact path={'/'} render={() => <Cards cities={cities} onClose={onClose}/>}/>
+      <Route path={'/'} component={Footer} />
     </div>
   );
 }
