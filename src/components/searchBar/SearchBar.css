@@ -40,4 +40,7 @@ form {
     display: flex;
     width: 100%;
     justify-content: center;
+    padding-left: 150px;
+    position: relative;
+    top: 20px;
 }

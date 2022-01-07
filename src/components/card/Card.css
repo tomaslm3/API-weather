@@ -69,4 +69,52 @@
   .body{
   width: 100%;
   text-align: center;
-}
+  }
+
+  .hidden {
+  background-color: var(--container);
+  position: absolute;
+  opacity: 0;
+  border-radius: 20px;
+  top: 100px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+  transition: all 0.4s step-end 0,5s;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  }
+
+  .wind {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+  }
+
+  .clouds {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+  }
+
+  .pressure {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+  }
+
+  .humidity {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+  }
+
+  .main:hover .hidden {
+    opacity: 1;
+  }

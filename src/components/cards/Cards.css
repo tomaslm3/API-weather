@@ -7,8 +7,10 @@
 
 
 .no-city{
-    height: 70vh;
+    height: 68vh;
     text-align: center;
-    font-size: 80px;
+    font-size: 30px;
     text-transform: uppercase;
+    position: relative;
+    top: 100px;
 }

@@ -21,6 +21,7 @@ function App() {
   function onSearch(city) {
     Api(city)
       .then((json) => {
+        console.log(json)
           if(json.main !== undefined) {
             const city = {
               min: Math.round(json.main.temp_min),
@@ -33,10 +34,15 @@ function App() {
               weather: json.weather[0].main,
               clouds: json.clouds.all,
               latitude: json.coord.lat,
-              longitude: json.coord.lon
+              longitude: json.coord.lon,
+              description: json.weather[0].description,
+              pressure: json.main.pressure,
+              humidity: json.main.humidity
             };
             if(cities.find((e) => e.id === city.id)){
               alert(`Ciudad ${city.name} duplicada`)
+            } else if(cities.length === 0) {
+              setCities((oldCities) => [...oldCities, city])
             } else {
               return !added ? null : setCities((oldCities) => [...oldCities, city]);
               

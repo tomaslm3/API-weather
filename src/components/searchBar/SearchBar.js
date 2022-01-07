@@ -5,7 +5,7 @@ export function validate(input) {
   if (!input) {
   error.city = 'City name is required'
   } else if ( /^(?:\d+)$/.test(input)) {
-    error.city = "City is invalid";
+    error.city = "Numeros no p";
   }
   return error;
 }
