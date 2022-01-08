@@ -3,9 +3,9 @@ import './SearchBar.css'
 export function validate(input) {
   let error = {}
   if (!input) {
-  error.city = 'Nombre requerido'
-  } else if ( /^[0-9-+()!#~%&<>=?¿/.,]*$/.test(input)) {
-    error.city = "Solo letras permitido*";
+  error.city = 'Nombre requerido*'
+  } else if ( /^[-+()!#~%&<>=?¿/.,]*$/.test(input)) {
+    error.city = "Caracter invalido*";
   }
   return error;
 }

@@ -23,7 +23,6 @@ function App() {
   function onSearch(city) {
     Api(city)
       .then((json) => {
-        console.log(json)
           if(json.main !== undefined) {
             const city = {
               min: Math.round(json.main.temp_min),
