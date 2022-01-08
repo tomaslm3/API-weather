@@ -1,4 +1,5 @@
 import React from "react";
+import GifBG from "../../gifBG/GifBG";
 import Card from "../card/Card";
 import './Cards.css'
 
@@ -28,7 +29,11 @@ export default function Cards({cities, onClose}) {
         );
     } else {
         return (
-            <div className="no-city">Sin ciudades</div>
+            <div className="gifBG">
+                    <GifBG/>
+            </div>
+        
         )
+         
     }
 }

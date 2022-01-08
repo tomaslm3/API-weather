@@ -3,9 +3,9 @@ import './SearchBar.css'
 export function validate(input) {
   let error = {}
   if (!input) {
-  error.city = 'City name is required'
-  } else if ( /^(?:\d+)$/.test(input)) {
-    error.city = "Numeros no p";
+  error.city = 'Nombre requerido'
+  } else if ( /^[0-9-+()!#~%&<>=?¿/.,]*$/.test(input)) {
+    error.city = "Solo letras permitido*";
   }
   return error;
 }
@@ -36,6 +36,8 @@ export default function SearchBar({ onSearch, success, switchTheme, theme }) {
 
   }, [error])
 
+  
+  
   return (
     <div className="searchBar">
       <div className="form-bar">

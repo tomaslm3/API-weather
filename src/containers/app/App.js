@@ -6,12 +6,14 @@ import Api from "../../apicontain/Api";
 import useLocalStorage from 'use-local-storage'
 import './App.css';
 import Footer from "../../components/footer/Footer";
+import GifBG from "../../gifBG/GifBG";
 
 function App() {
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
   const [cities, setCities] = useState([]);
   const [added, setAdded] = useState(false)
+
 
   const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -62,6 +64,9 @@ function App() {
     }
   return (
     <div className="App" data-theme={theme}>
+      <div className="gif">
+        {cities.length !== 0 ? <GifBG /> :null}
+      </div>
       <Route path={'/'} render={() => <Nav onSearch={onSearch} success={success} switchTheme={switchTheme} theme={theme}/>} />
       <Route exact path={'/'} render={() => <Cards cities={cities} onClose={onClose}/>}/>
       <Route path={'/'} component={Footer} />

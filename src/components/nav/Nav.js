@@ -2,7 +2,7 @@ import React from "react";
 import SearchBar from "../searchBar/SearchBar";
 import './Nav.css'
 
-function Nav({onSearch, success, switchTheme, theme}) {
+function Nav({onSearch, success, switchTheme, theme, toggleLogo}) {
     return (
         <div className="nav">
             <div className="nav-link">
